@@ -1,0 +1,479 @@
+# 字型庫登錄表（minna-fonts-tomo）
+# 供文件及繪圖工具共用。工具依自己的需求，只取用到的字型（見 README）。
+#
+# 收錄原則：
+#   - 只收 TrueType（glyf 外框）且為固定字重的字型：OTF（CFF）與可變字重（variable）字型，
+#     在 Chromium／Vivliostyle 產生 PDF 時會被存成 Type 3（實測），文字難以選取複製、檔案暴增。
+#   - 授權允許商用、嵌入 PDF、隨 repo 散布；原樣保存，不修改字形、不轉換格式。
+#   - id 結尾 -ttf 標示 TrueType。
+#
+# 欄位：
+#   name        名稱            category   類別（楷書／明體／黑體／等寬／西文／符號）
+#   path        資料夾：依類別放在 kai／serif／sans／mono／latin／symbols 之下
+#   languages   主要語言        appearance 外觀            use   適用場合
+#   license     授權            commercial／embed／redistribute  可否商用／嵌入 PDF／隨 repo 散布
+#   outline     外框格式        pdf_chromium  Chromium 產生 PDF 時的內嵌方式（實測）
+#   source      官方來源        version    版本（換版本會讓 repo 歷史變大，須先確認）
+#   files       字型檔。faces 有列的為各字重、字體；沒列的依序作為補字（例：全字庫的擴充區）
+#   faces       字型檔 → "字重" 或 "字重 italic"（CSS font-weight／font-style）
+#   license_files  授權文件
+#   download    下載方式：zip（壓縮檔）／7z（7-Zip 壓縮檔）／deb（Debian 套件）／google（Google Fonts 官方下載清單的固定字重 TrueType）
+
+
+tw-kai-ttf:
+  name: 全字庫正楷體
+  category: 楷書
+  path: kai/tw-kai-ttf
+  languages: [zh-TW]
+  appearance: 正式楷書，依教育部標準字形，外觀最接近標楷體
+  use: 公文、政府計畫書等需要標楷體的正式文件
+  glyphs: 102000
+  license: 政府資料開放授權條款第 1 版
+  commercial: 可
+  embed: 可
+  redistribute: 可（須標示來源：國家發展委員會）
+  outline: TrueType
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://www.cns11643.gov.tw/
+  version: Fonts_Kai.zip（98_1）
+  files: [TW-Kai-98_1.ttf, TW-Kai-Ext-B-98_1.ttf, TW-Kai-Plus-98_1.ttf]
+  license_files: [LICENSE.md]
+  download: {zip: 'https://www.cns11643.gov.tw/opendata/Fonts_Kai.zip'}
+
+tw-sung-ttf:
+  name: 全字庫正宋體
+  category: 明體
+  path: serif/tw-sung-ttf
+  languages: [zh-TW]
+  appearance: 正式明體（宋體），依教育部標準字形
+  use: 公文、正式文件等需要新細明體的場合
+  glyphs: 102000
+  license: 政府資料開放授權條款第 1 版
+  commercial: 可
+  embed: 可
+  redistribute: 可（須標示來源：國家發展委員會）
+  outline: TrueType
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://www.cns11643.gov.tw/
+  version: Fonts_Sung.zip（98_1）
+  files: [TW-Sung-98_1.ttf, TW-Sung-Ext-B-98_1.ttf, TW-Sung-Plus-98_1.ttf]
+  license_files: [LICENSE.md]
+  download: {zip: 'https://www.cns11643.gov.tw/opendata/Fonts_Sung.zip'}
+
+liberation-serif-ttf:
+  name: Liberation Serif
+  category: 西文
+  path: latin/liberation-serif-ttf
+  languages: [en]
+  appearance: 與 Times New Roman 字寬完全相同（metric-compatible）的襯線體
+  use: 代替 Times New Roman
+  glyphs: 0
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附授權；保留字型名稱 Liberation）
+  outline: TrueType
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://github.com/liberationfonts/liberation-fonts
+  version: 2.1.5（Debian fonts-liberation 2.1.5-3）
+  files: [LiberationSerif-Regular.ttf, LiberationSerif-Italic.ttf, LiberationSerif-Bold.ttf, LiberationSerif-BoldItalic.ttf]
+  license_files: [copyright]
+  download:
+    deb: http://deb.debian.org/debian/pool/main/f/fonts-liberation/fonts-liberation_2.1.5-3_all.deb
+    deb_files: {LiberationSerif-Regular.ttf: usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf, LiberationSerif-Italic.ttf: usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf,
+      LiberationSerif-Bold.ttf: usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf, LiberationSerif-BoldItalic.ttf: usr/share/fonts/truetype/liberation/LiberationSerif-BoldItalic.ttf}
+    license_path: usr/share/doc/fonts-liberation/copyright
+  faces: {LiberationSerif-Regular.ttf: '400', LiberationSerif-Italic.ttf: 400 italic, LiberationSerif-Bold.ttf: '700', LiberationSerif-BoldItalic.ttf: 700 italic}
+
+liberation-sans-ttf:
+  name: Liberation Sans
+  category: 西文
+  path: latin/liberation-sans-ttf
+  languages: [en]
+  appearance: 與 Arial 字寬完全相同（metric-compatible）的無襯線體
+  use: 代替 Arial
+  glyphs: 0
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附授權；保留字型名稱 Liberation）
+  outline: TrueType
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://github.com/liberationfonts/liberation-fonts
+  version: 2.1.5（Debian fonts-liberation 2.1.5-3）
+  files: [LiberationSans-Regular.ttf, LiberationSans-Italic.ttf, LiberationSans-Bold.ttf, LiberationSans-BoldItalic.ttf]
+  license_files: [copyright]
+  download:
+    deb: http://deb.debian.org/debian/pool/main/f/fonts-liberation/fonts-liberation_2.1.5-3_all.deb
+    deb_files: {LiberationSans-Regular.ttf: usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf, LiberationSans-Italic.ttf: usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf, LiberationSans-Bold.ttf: usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf,
+      LiberationSans-BoldItalic.ttf: usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf}
+    license_path: usr/share/doc/fonts-liberation/copyright
+  faces: {LiberationSans-Regular.ttf: '400', LiberationSans-Italic.ttf: 400 italic, LiberationSans-Bold.ttf: '700', LiberationSans-BoldItalic.ttf: 700 italic}
+
+liberation-mono-ttf:
+  name: Liberation Mono
+  category: 西文
+  path: latin/liberation-mono-ttf
+  languages: [en]
+  appearance: 與 Courier New 字寬完全相同（metric-compatible）的等寬字
+  use: 代替 Courier New
+  glyphs: 0
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附授權；保留字型名稱 Liberation）
+  outline: TrueType
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://github.com/liberationfonts/liberation-fonts
+  version: 2.1.5（Debian fonts-liberation 2.1.5-3）
+  files: [LiberationMono-Regular.ttf, LiberationMono-Italic.ttf, LiberationMono-Bold.ttf, LiberationMono-BoldItalic.ttf]
+  faces: {LiberationMono-Regular.ttf: '400', LiberationMono-Italic.ttf: 400 italic, LiberationMono-Bold.ttf: '700', LiberationMono-BoldItalic.ttf: 700 italic}
+  license_files: [copyright]
+  download:
+    deb: http://deb.debian.org/debian/pool/main/f/fonts-liberation/fonts-liberation_2.1.5-3_all.deb
+    deb_files: {LiberationMono-Regular.ttf: usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf, LiberationMono-Italic.ttf: usr/share/fonts/truetype/liberation/LiberationMono-Italic.ttf, LiberationMono-Bold.ttf: usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf,
+      LiberationMono-BoldItalic.ttf: usr/share/fonts/truetype/liberation/LiberationMono-BoldItalic.ttf}
+    license_path: usr/share/doc/fonts-liberation/copyright
+
+carlito-ttf:
+  name: Carlito
+  category: 西文
+  path: latin/carlito-ttf
+  languages: [en]
+  appearance: 與 Calibri 字寬完全相同（metric-compatible）
+  use: 代替 Calibri（Word 2007 以後的預設字型）
+  glyphs: 0
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附授權）
+  outline: TrueType
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://github.com/googlefonts/carlito
+  version: 20230309（Debian fonts-crosextra-carlito 20230309-2）
+  files: [Carlito-Regular.ttf, Carlito-Italic.ttf, Carlito-Bold.ttf, Carlito-BoldItalic.ttf]
+  faces: {Carlito-Regular.ttf: '400', Carlito-Italic.ttf: 400 italic, Carlito-Bold.ttf: '700', Carlito-BoldItalic.ttf: 700 italic}
+  license_files: [copyright]
+  download:
+    deb: http://deb.debian.org/debian/pool/main/f/fonts-crosextra-carlito/fonts-crosextra-carlito_20230309-2_all.deb
+    deb_files: {Carlito-Regular.ttf: usr/share/fonts/truetype/crosextra/Carlito-Regular.ttf, Carlito-Italic.ttf: usr/share/fonts/truetype/crosextra/Carlito-Italic.ttf, Carlito-Bold.ttf: usr/share/fonts/truetype/crosextra/Carlito-Bold.ttf,
+      Carlito-BoldItalic.ttf: usr/share/fonts/truetype/crosextra/Carlito-BoldItalic.ttf}
+    license_path: usr/share/doc/fonts-crosextra-carlito/copyright
+
+caladea-ttf:
+  name: Caladea
+  category: 西文
+  path: latin/caladea-ttf
+  languages: [en]
+  appearance: 與 Cambria 字寬完全相同（metric-compatible）
+  use: 代替 Cambria（Word 2007 以後的預設字型）
+  glyphs: 0
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附授權）
+  outline: TrueType
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://github.com/googlefonts/caladea
+  version: 20200211（Debian fonts-crosextra-caladea 20200211-2）
+  files: [Caladea-Regular.ttf, Caladea-Italic.ttf, Caladea-Bold.ttf, Caladea-BoldItalic.ttf]
+  faces: {Caladea-Regular.ttf: '400', Caladea-Italic.ttf: 400 italic, Caladea-Bold.ttf: '700', Caladea-BoldItalic.ttf: 700 italic}
+  license_files: [copyright]
+  download:
+    deb: http://deb.debian.org/debian/pool/main/f/fonts-crosextra-caladea/fonts-crosextra-caladea_20200211-2_all.deb
+    deb_files: {Caladea-Regular.ttf: usr/share/fonts/truetype/crosextra/Caladea-Regular.ttf, Caladea-Italic.ttf: usr/share/fonts/truetype/crosextra/Caladea-Italic.ttf, Caladea-Bold.ttf: usr/share/fonts/truetype/crosextra/Caladea-Bold.ttf,
+      Caladea-BoldItalic.ttf: usr/share/fonts/truetype/crosextra/Caladea-BoldItalic.ttf}
+    license_path: usr/share/doc/fonts-crosextra-caladea/copyright
+
+noto-sans-ttf:
+  name: Noto Sans
+  category: 西文
+  path: latin/noto-sans-ttf
+  languages: [en]
+  appearance: 無襯線西文（含拉丁、希臘、西里爾字母），與 Noto Sans TC 的英數同一設計
+  use: Noto 系列範本的英文斜體、粗斜體
+  glyphs: 0
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSans-Regular.ttf, NotoSans-Italic.ttf, NotoSans-Bold.ttf, NotoSans-BoldItalic.ttf]
+  faces: {NotoSans-Regular.ttf: '400', NotoSans-Italic.ttf: 400 italic, NotoSans-Bold.ttf: '700', NotoSans-BoldItalic.ttf: 700 italic}
+  license_files: [OFL.txt]
+  download: {google: Noto Sans}
+
+noto-serif-ttf:
+  name: Noto Serif
+  category: 西文
+  path: latin/noto-serif-ttf
+  languages: [en]
+  appearance: 襯線西文（含拉丁、希臘、西里爾字母），與 Noto Serif TC 的英數同一設計
+  use: Noto 系列範本的英文斜體、粗斜體
+  glyphs: 0
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSerif-Regular.ttf, NotoSerif-Italic.ttf, NotoSerif-Bold.ttf, NotoSerif-BoldItalic.ttf]
+  faces: {NotoSerif-Regular.ttf: '400', NotoSerif-Italic.ttf: 400 italic, NotoSerif-Bold.ttf: '700', NotoSerif-BoldItalic.ttf: 700 italic}
+  license_files: [OFL.txt]
+  download: {google: Noto Serif}
+
+noto-sans-tc-ttf:
+  name: Noto Sans TC
+  category: 黑體
+  path: sans/noto-sans-tc-ttf
+  languages: [zh-TW]
+  appearance: 繁體中文黑體（即思源黑體）
+  use: 繁體中文內文與標題（無襯線）
+  glyphs: null
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSansTC-Regular.ttf, NotoSansTC-Medium.ttf, NotoSansTC-Bold.ttf, NotoSansTC-Black.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Sans TC}
+  faces: {NotoSansTC-Regular.ttf: '400', NotoSansTC-Medium.ttf: '500', NotoSansTC-Bold.ttf: '700', NotoSansTC-Black.ttf: '900'}
+
+noto-sans-sc-ttf:
+  name: Noto Sans SC
+  category: 黑體
+  path: sans/noto-sans-sc-ttf
+  languages: [zh-CN]
+  appearance: 簡體中文黑體（即思源黑體）
+  use: 簡體中文內文與標題（無襯線）
+  glyphs: null
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSansSC-Regular.ttf, NotoSansSC-Medium.ttf, NotoSansSC-Bold.ttf, NotoSansSC-Black.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Sans SC}
+  faces: {NotoSansSC-Regular.ttf: '400', NotoSansSC-Medium.ttf: '500', NotoSansSC-Bold.ttf: '700', NotoSansSC-Black.ttf: '900'}
+
+noto-sans-jp-ttf:
+  name: Noto Sans JP
+  category: 黑體
+  path: sans/noto-sans-jp-ttf
+  languages: [ja]
+  appearance: 日文黑體（即思源黑體）
+  use: 日文內文與標題（無襯線）
+  glyphs: null
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSansJP-Regular.ttf, NotoSansJP-Medium.ttf, NotoSansJP-Bold.ttf, NotoSansJP-Black.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Sans JP}
+  faces: {NotoSansJP-Regular.ttf: '400', NotoSansJP-Medium.ttf: '500', NotoSansJP-Bold.ttf: '700', NotoSansJP-Black.ttf: '900'}
+
+noto-sans-kr-ttf:
+  name: Noto Sans KR
+  category: 黑體
+  path: sans/noto-sans-kr-ttf
+  languages: [ko]
+  appearance: 韓文黑體（即思源黑體）
+  use: 韓文內文與標題（無襯線）
+  glyphs: null
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSansKR-Regular.ttf, NotoSansKR-Medium.ttf, NotoSansKR-Bold.ttf, NotoSansKR-Black.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Sans KR}
+  faces: {NotoSansKR-Regular.ttf: '400', NotoSansKR-Medium.ttf: '500', NotoSansKR-Bold.ttf: '700', NotoSansKR-Black.ttf: '900'}
+
+noto-serif-tc-ttf:
+  name: Noto Serif TC
+  category: 明體
+  path: serif/noto-serif-tc-ttf
+  languages: [zh-TW]
+  appearance: 繁體中文明體（即思源宋體）
+  use: 繁體中文正式文件（襯線）
+  glyphs: null
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSerifTC-Regular.ttf, NotoSerifTC-Bold.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Serif TC}
+  faces: {NotoSerifTC-Regular.ttf: '400', NotoSerifTC-Bold.ttf: '700'}
+
+noto-serif-sc-ttf:
+  name: Noto Serif SC
+  category: 明體
+  path: serif/noto-serif-sc-ttf
+  languages: [zh-CN]
+  appearance: 簡體中文明體（即思源宋體）
+  use: 簡體中文正式文件（襯線）
+  glyphs: null
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSerifSC-Regular.ttf, NotoSerifSC-Bold.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Serif SC}
+  faces: {NotoSerifSC-Regular.ttf: '400', NotoSerifSC-Bold.ttf: '700'}
+
+noto-serif-jp-ttf:
+  name: Noto Serif JP
+  category: 明體
+  path: serif/noto-serif-jp-ttf
+  languages: [ja]
+  appearance: 日文明體（即思源宋體）
+  use: 日文正式文件（襯線）
+  glyphs: null
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSerifJP-Regular.ttf, NotoSerifJP-Bold.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Serif JP}
+  faces: {NotoSerifJP-Regular.ttf: '400', NotoSerifJP-Bold.ttf: '700'}
+
+noto-serif-kr-ttf:
+  name: Noto Serif KR
+  category: 明體
+  path: serif/noto-serif-kr-ttf
+  languages: [ko]
+  appearance: 韓文明體（即思源宋體）
+  use: 韓文正式文件（襯線）
+  glyphs: null
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSerifKR-Regular.ttf, NotoSerifKR-Bold.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Serif KR}
+  faces: {NotoSerifKR-Regular.ttf: '400', NotoSerifKR-Bold.ttf: '700'}
+
+noto-sans-mono-ttf:
+  name: Noto Sans Mono
+  category: 等寬
+  path: mono/noto-sans-mono-ttf
+  languages: [en]
+  appearance: 等寬西文字型
+  use: 程式碼（中文退回同語言黑體）
+  glyphs: 0
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSansMono-Regular.ttf, NotoSansMono-Bold.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Sans Mono}
+  faces: {NotoSansMono-Regular.ttf: '400', NotoSansMono-Bold.ttf: '700'}
+
+noto-sans-symbols2-ttf:
+  name: Noto Sans Symbols 2
+  category: 符號
+  path: symbols/noto-sans-symbols2-ttf
+  languages: [und]
+  appearance: 符號與幾何圖形：✓ ✗ ☑ ☒、箭頭、方塊、圓形、棋牌、點字等
+  use: 中文、西文字型沒有的符號（補字）
+  glyphs: 0
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSansSymbols2-Regular.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Sans Symbols 2}
+
+
+noto-sans-symbols-ttf:
+  name: Noto Sans Symbols
+  category: 符號
+  path: symbols/noto-sans-symbols-ttf
+  languages: [sym]
+  appearance: 符號：旗幟 ⚐ ⚑、圈號數字 ⓵ ⓶、天文、骰子、八卦、技術符號等
+  use: 與 Noto Sans Symbols 2 互補的符號（補字）
+  glyphs: 0
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附 OFL.txt）
+  outline: TrueType（固定字重）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://fonts.google.com/noto
+  version: Google Fonts 下載清單（取得日 2026-11-07）
+  files: [NotoSansSymbols-Regular.ttf]
+  license_files: [OFL.txt]
+  download: {google: Noto Sans Symbols}
+
+sarasa-mono-tc-ttf:
+  name: 更紗黑體 Mono TC（Sarasa Mono TC）
+  category: 等寬
+  path: mono/sarasa-mono-tc-ttf
+  languages: [zh-TW]
+  appearance: 中英文等寬黑體：一個中文字＝兩個英數字寬，程式碼與表格對齊；字形依台灣標準（TC）
+  use: 程式碼區塊、需要中英對齊的純文字
+  glyphs: null
+  license: SIL Open Font License 1.1
+  commercial: 可
+  embed: 可
+  redistribute: 可（須附授權）
+  outline: TrueType（未微調 unhinted：只影響螢幕小字，不影響 PDF 與列印）
+  pdf_chromium: 一般內嵌（只保留用到的字）
+  source: https://github.com/be5invis/Sarasa-Gothic
+  version: 1.0.43
+  files: [SarasaMonoTC-Regular.ttf, SarasaMonoTC-Bold.ttf]
+  faces: {SarasaMonoTC-Regular.ttf: '400', SarasaMonoTC-Bold.ttf: '700'}
+  license_files: [LICENSE]
+  download: {7z: 'https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.43/SarasaMonoTC-TTF-Unhinted-1.0.43.7z', license_url: 'https://raw.githubusercontent.com/be5invis/Sarasa-Gothic/v1.0.43/LICENSE'}

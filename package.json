@@ -1,0 +1,26 @@
+{
+  "name": "minna-fonts-tomo",
+  "version": "261107.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "適用於建立文件及其元件（例：表格、圖表）之字型庫，收錄授權允許散布之 TrueType 固定字重字型，作為官方來源之鏡像，供其他專案或 AI 代理存取。",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "list": "node fetch.mjs --list",
+    "fetch": "node fetch.mjs",
+    "specimen": "node specimen.mjs",
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "7zip-bin": "5.2.0",
+    "adm-zip": "0.5.16",
+    "js-yaml": "5.5.0",
+    "pdf-lib": "1.17.1",
+    "puppeteer-core": "25.1.0",
+    "tar-stream": "3.1.7",
+    "xz-decompress": "0.2.3"
+  }
+}
